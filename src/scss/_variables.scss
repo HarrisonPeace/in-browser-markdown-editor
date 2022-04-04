@@ -1,0 +1,28 @@
+:root {
+  // custom stable colors
+  --highlight-primary: #e46643;
+  --highlight-secondary: #f39765;
+
+  //dark-light theme colors
+  --background-main: $var(--bs-white);
+  --background-secondary: $var(--bs-gray-200);
+  --text-main: $var(--bs-gray-700);
+  --text-secondary: $var(--bs-gray-500);
+  --text-highlight: $var(--bs-gray-700);
+}
+
+html[data-theme="light"] {
+  --background-main: $var(--bs-white);
+  --background-secondary: $var(--grey-one);
+  --text-main: $var(--grey-six);
+  --text-secondary: $var(--grey-four);
+  --text-highlight: $var(--grey-six);
+}
+
+html[data-theme="dark"] {
+  --background-main: $var(--black);
+  --background-secondary: $var(--bs-gray-200);
+  --text-main: $var(--bs-gray-400);
+  --text-secondary: $var(--bs-gray-400);
+  --text-highlight: $var(--bs-white);
+}
