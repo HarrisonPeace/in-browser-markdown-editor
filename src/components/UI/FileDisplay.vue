@@ -7,7 +7,7 @@
     </svg>
     <div class="file-display__details">
       <span class="file-display__heading">{{ subHeading }}</span>
-      <span class="file-display__name"><slot /></span>
+      <span class="file-display__name color-light"><slot /></span>
     </div>
   </component>
 </template>
@@ -48,9 +48,8 @@ export default {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: var(--bs-white);
-  &__hover {
-    .file-display__name:hover {
+  &__hover:hover {
+    .file-display__name {
       color: var(--highlight-primary);
     }
   }

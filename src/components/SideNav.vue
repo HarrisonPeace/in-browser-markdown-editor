@@ -1,5 +1,5 @@
 <template>
-  <nav class="side-nav">
+  <nav :class="['side-nav', navOpen && 'side-nav--nav-open']">
     <span class="heading side-nav__heading">MY DOCUMENTS</span>
     <v-button show-plus>+ New Document</v-button>
     <file-display class="side-nav__file" sub-heading="01 April 2022" to="/untitled-document"
@@ -32,6 +32,12 @@
 
 <script>
 export default {
+  props: {
+    navOpen: {
+      type: Boolean,
+      required: true
+    }
+  },
   computed: {
     sliderBGImage() {
       return 'background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e")';
@@ -69,7 +75,11 @@ export default {
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -250px;
+  transition: left 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &--nav-open {
+    left: 0;
+  }
   &__heading {
     color: var(--bs-gray-500);
     margin-bottom: 29px;
