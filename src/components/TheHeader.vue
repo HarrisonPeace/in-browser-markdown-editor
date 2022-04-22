@@ -13,7 +13,7 @@
         </g>
       </svg>
     </div>
-    <span class="header__heading">MARKDOWN</span>
+    <h1 class="header__heading">MARKDOWN</h1>
     <div class="header__divider"></div>
     <div class="header__file">
       <file-display>welcome.md</file-display>
@@ -63,6 +63,7 @@ export default {
   }
 
   &__heading {
+    font-size: 15px;
     color: var(--bs-white);
     text-align: center;
     line-height: 72px;

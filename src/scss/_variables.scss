@@ -4,25 +4,28 @@
   --highlight-secondary: #f39765;
 
   //dark-light theme colors
-  --background-main: $var(--bs-white);
-  --background-secondary: $var(--bs-gray-200);
-  --text-main: $var(--bs-gray-700);
-  --text-secondary: $var(--bs-gray-500);
-  --text-highlight: $var(--bs-gray-700);
+  --background-main: var(--bs-black);
+  --background-secondary: var(--bs-gray-200);
+  --background-panel-heading: var(--bs-gray-900);
+  --text-main: var(--bs-gray-400);
+  --text-secondary: var(--bs-gray-400);
+  --text-highlight: var(--bs-white);
 }
 
 html[data-theme="light"] {
-  --background-main: $var(--bs-white);
-  --background-secondary: $var(--grey-one);
-  --text-main: $var(--grey-six);
-  --text-secondary: $var(--grey-four);
-  --text-highlight: $var(--grey-six);
+  --background-main: var(--bs-white);
+  --background-secondary: var(--bs-gray-100);
+  --background-panel-heading: var(--bs-gray-200);
+  --text-main: var(--bs-gray-600);
+  --text-secondary: var(--bs-gray-500);
+  --text-highlight: var(--bs-gray-600);
 }
 
 html[data-theme="dark"] {
-  --background-main: $var(--black);
-  --background-secondary: $var(--bs-gray-200);
-  --text-main: $var(--bs-gray-400);
-  --text-secondary: $var(--bs-gray-400);
-  --text-highlight: $var(--bs-white);
+  --background-main: var(--bs-black);
+  --background-secondary: var(--bs-gray-200);
+  --background-panel-heading: var(--bs-gray-900);
+  --text-main: var(--bs-gray-400);
+  --text-secondary: var(--bs-gray-400);
+  --text-highlight: var(--bs-white);
 }
