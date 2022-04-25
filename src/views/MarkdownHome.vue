@@ -1,9 +1,7 @@
 <template>
   <div class="markdown-home">
-    <div style="display: flex">
-      <markdown-editor style="width: 50%"></markdown-editor>
-      <markdown-Preview style="width: 50%"></markdown-Preview>
-    </div>
+    <markdown-editor :show-editor="showEditor"></markdown-editor>
+    <markdown-preview :show-editor="showEditor" @hide-show-editor="hideShowEditor"></markdown-preview>
   </div>
 </template>
 
@@ -16,6 +14,23 @@ export default {
   components: {
     MarkdownEditor,
     MarkdownPreview
+  },
+  data() {
+    return {
+      showEditor: true
+    };
+  },
+  methods: {
+    hideShowEditor() {
+      this.showEditor = !this.showEditor;
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.markdown-home {
+  display: flex;
+  height: 100%;
+}
+</style>
