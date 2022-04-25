@@ -1,6 +1,6 @@
 <template>
   <section :class="['markdown-preview', !showEditor && 'markdown-preview--full-width']">
-    <markdown-panel heading="Preview">
+    <markdown-panel heading="Preview" :show-editor="showEditor">
       <template #button>
         <button class="markdown-preview__button" @click="$emit('hideShowEditor')">
           <svg width="16" height="12" xmlns="http://www.w3.org/2000/svg">
@@ -10,6 +10,10 @@
           </svg>
         </button>
       </template>
+      <div>
+        <h1>Hello World</h1>
+        <p>asdfkowqeiorthodfgnasdkonfm qwefjqweiofjqweof weqfwejf iokwefj wefiowefiowejfnqweofj wei9f qwef we</p>
+      </div>
     </markdown-panel>
   </section>
 </template>

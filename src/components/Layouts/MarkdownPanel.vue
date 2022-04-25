@@ -1,10 +1,10 @@
 <template>
-  <div class="markdown-panel">
+  <div class="markdown-panel" ref="container">
     <div class="markdown-panel__header">
       <h2 class="markdown-panel__heading">{{ heading }}</h2>
       <div><slot name="button"></slot></div>
     </div>
-    <div class="markdown-panel__content container"><slot></slot></div>
+    <div class="markdown-panel__content" :style="{ maxWidth: `${contentMaxWidth}px` }"><slot></slot></div>
   </div>
 </template>
 
@@ -19,7 +19,38 @@ export default {
     showBorder: {
       type: Boolean,
       default: false
+    },
+    // TODO: add showEditor to store
+    showEditor: {
+      type: Boolean,
+      required: true
     }
+  },
+  data() {
+    return {
+      contentMaxWidth: 0
+    };
+  },
+  methods: {
+    getContainerWidth() {
+      return this.showEditor ? this.$refs.container.clientWidth : this.$refs.container.clientWidth / 2;
+    },
+    handelResize() {
+      this.contentMaxWidth = this.getContainerWidth();
+    },
+    setResizeListener() {
+      window.addEventListener("resize", this.handelResize);
+    },
+    removeResizeListener() {
+      window.removeEventListener("resize", this.handelResize);
+    }
+  },
+  mounted() {
+    this.handelResize();
+    this.setResizeListener();
+  },
+  unmounted() {
+    this.removeResizeListener();
   }
 };
 </script>
@@ -44,6 +75,7 @@ export default {
   &__content {
     background-color: var(--background-main);
     height: 100%;
+    margin: 0 auto;
   }
 }
 </style>
