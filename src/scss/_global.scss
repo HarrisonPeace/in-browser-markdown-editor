@@ -1,3 +1,20 @@
 body {
   overflow-x: hidden;
+  transition: background-color ease-out 0.3s, color ease-out 0.3s;
+}
+
+div {
+  transition: background-color ease-out 0.3s;
+}
+
+p,
+button,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  transition: color ease-out 0.3s;
 }

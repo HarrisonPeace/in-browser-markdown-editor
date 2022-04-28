@@ -57,6 +57,8 @@ export default {
 
 <style lang="scss">
 .markdown-panel {
+  width: 100%;
+  background-color: var(--background-main);
   &__header {
     background-color: var(--background-panel-heading);
     height: 42px;
@@ -73,9 +75,10 @@ export default {
     text-transform: uppercase;
   }
   &__content {
-    background-color: var(--background-main);
-    height: 100%;
+    display: flex;
+    padding: 22px 23px;
     margin: 0 auto;
+    min-height: 95%;
   }
 }
 </style>

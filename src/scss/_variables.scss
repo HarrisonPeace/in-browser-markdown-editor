@@ -3,8 +3,8 @@
   --highlight-primary: #e46643;
   --highlight-secondary: #f39765;
 
-  //dark-light theme colors
-  --background-main: var(--bs-black);
+  //dark theme colors as default
+  --background-main: #151619;
   --background-secondary: var(--bs-gray-200);
   --background-panel-heading: var(--bs-gray-900);
   --text-main: var(--bs-gray-400);
@@ -22,7 +22,7 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --background-main: var(--bs-black);
+  --background-main: #151619;
   --background-secondary: var(--bs-gray-200);
   --background-panel-heading: var(--bs-gray-900);
   --text-main: var(--bs-gray-400);

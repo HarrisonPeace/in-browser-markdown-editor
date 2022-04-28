@@ -10,7 +10,7 @@
           </svg>
         </button>
       </template>
-      <div>
+      <div class="markdown-preview__content">
         <h1>Hello World</h1>
         <p>asdfkowqeiorthodfgnasdkonfm qwefjqweiofjqweof weqfwejf iokwefj wefiowefiowejfnqweofj wei9f qwef we</p>
       </div>
@@ -38,6 +38,7 @@ export default {
 
 <style lang="scss">
 .markdown-preview {
+  display: flex;
   transition: width 900ms cubic-bezier(0.215, 0.61, 0.355, 1), border-width 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
   width: 50%;
   border-left: 1px solid var(--bs-gray-600);
