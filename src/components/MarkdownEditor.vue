@@ -1,12 +1,14 @@
 <template>
   <section class="markdown-editor" :style="{ width: showEditor ? '50%' : '0%' }">
-    <markdown-panel heading="Markdown" :show-editor="showEditor">
+    <markdown-panel heading="Markdown">
       <div contenteditable="true" class="markdown-editor__content"></div>
     </markdown-panel>
   </section>
 </template>
 
 <script>
+import { mapState } from "pinia";
+import { useMarkdownStore } from "@/store/MarkdownStore";
 import MarkdownPanel from "./Layouts/MarkdownPanel.vue";
 
 export default {
@@ -14,11 +16,8 @@ export default {
   components: {
     MarkdownPanel
   },
-  props: {
-    showEditor: {
-      type: Boolean,
-      required: true
-    }
+  computed: {
+    ...mapState(useMarkdownStore, ["showEditor"])
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="markdown-home">
-    <markdown-editor :show-editor="showEditor"></markdown-editor>
-    <markdown-preview :show-editor="showEditor" @hide-show-editor="hideShowEditor"></markdown-preview>
+    <markdown-editor></markdown-editor>
+    <markdown-preview></markdown-preview>
   </div>
 </template>
 
@@ -14,16 +14,6 @@ export default {
   components: {
     MarkdownEditor,
     MarkdownPreview
-  },
-  data() {
-    return {
-      showEditor: true
-    };
-  },
-  methods: {
-    hideShowEditor() {
-      this.showEditor = !this.showEditor;
-    }
   }
 };
 </script>

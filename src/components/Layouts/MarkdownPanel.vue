@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+import { useMarkdownStore } from "@/store/MarkdownStore";
+
 export default {
   name: "MarkDownPanel",
   props: {
@@ -19,12 +22,10 @@ export default {
     showBorder: {
       type: Boolean,
       default: false
-    },
-    // TODO: add showEditor to store
-    showEditor: {
-      type: Boolean,
-      required: true
     }
+  },
+  computed: {
+    ...mapState(useMarkdownStore, ["showEditor"])
   },
   data() {
     return {
