@@ -16,7 +16,7 @@
     <h1 class="header__heading">MARKDOWN</h1>
     <div class="header__divider"></div>
     <div class="header__file">
-      <file-display>welcome.md</file-display>
+      <file-display>{{ `${activeFile.fileName}.md` }}</file-display>
     </div>
     <svg width="18" height="20" xmlns="http://www.w3.org/2000/svg" class="header__delete">
       <path
@@ -28,6 +28,9 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+import { useMarkdownStore } from "@/store/MarkdownStore";
+
 export default {
   name: "TheHeader",
   emits: ["menuClick"],
@@ -36,6 +39,9 @@ export default {
       type: Boolean,
       required: true
     }
+  },
+  computed: {
+    ...mapState(useMarkdownStore, ["activeFile"])
   },
   methods: {
     menuClick() {

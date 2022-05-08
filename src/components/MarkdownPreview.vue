@@ -15,10 +15,7 @@
           </svg>
         </button>
       </template>
-      <div class="markdown-preview__content">
-        <h1>Hello World</h1>
-        <p>asdfkowqeiorthodfgnasdkonfm qwefjqweiofjqweof weqfwejf iokwefj wefiowefiowejfnqweofj wei9f qwef we</p>
-      </div>
+      <div class="markdown-preview__content" v-html="HTMLContent"></div>
     </markdown-panel>
   </section>
 </template>
@@ -27,6 +24,8 @@
 import { mapState, mapActions } from "pinia";
 import { useMarkdownStore } from "@/store/MarkdownStore";
 import MarkdownPanel from "./Layouts/MarkdownPanel.vue";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 export default {
   name: "MarkdownPreview",
@@ -34,10 +33,17 @@ export default {
     MarkdownPanel
   },
   computed: {
-    ...mapState(useMarkdownStore, ["showEditor"])
+    ...mapState(useMarkdownStore, ["showEditor"]),
+    HTMLContent() {
+      const currentFile = this.getActiveFile();
+      if (!currentFile || !currentFile.content) {
+        return "";
+      }
+      return DOMPurify.sanitize(marked.parse(currentFile.content));
+    }
   },
   methods: {
-    ...mapActions(useMarkdownStore, ["toggleShowEditor"])
+    ...mapActions(useMarkdownStore, ["toggleShowEditor", "getActiveFile", "getActiveFileName"])
   }
 };
 </script>

@@ -3,7 +3,14 @@ import MarkdownHome from "../views/MarkdownHome.vue";
 
 const routes = [
   {
+    // /search/screens -> /search?q=screens
     path: "/",
+    redirect: () => {
+      return { path: "/welcome" };
+    }
+  },
+  {
+    path: "/:fileName",
     name: "MarkdownHome",
     component: MarkdownHome
   }

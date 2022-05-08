@@ -1,13 +1,18 @@
 <template>
   <section class="markdown-editor" :style="{ width: showEditor ? '50%' : '0%' }">
     <markdown-panel heading="Markdown">
-      <div contenteditable="true" class="markdown-editor__content"></div>
+      <div
+        ref="markdownText"
+        contenteditable="true"
+        class="markdown-editor__content"
+        @keyup="e => updateActiveFileContent(e.target.innerText)"></div>
     </markdown-panel>
   </section>
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
+import DOMPurify from "dompurify";
 import { useMarkdownStore } from "@/store/MarkdownStore";
 import MarkdownPanel from "./Layouts/MarkdownPanel.vue";
 
@@ -16,8 +21,26 @@ export default {
   components: {
     MarkdownPanel
   },
+  mounted() {
+    this.getMarkdownContent();
+  },
   computed: {
-    ...mapState(useMarkdownStore, ["showEditor"])
+    ...mapState(useMarkdownStore, ["showEditor", "activeFile"])
+  },
+  watch: {
+    activeFile() {
+      this.getMarkdownContent();
+    }
+  },
+  methods: {
+    ...mapActions(useMarkdownStore, ["updateActiveFileContent", "getActiveFile"]),
+    getMarkdownContent() {
+      if (!this.activeFile || !this.activeFile.content) {
+        this.$refs.markdownText.innerText = "";
+        return;
+      }
+      this.$refs.markdownText.innerText = DOMPurify.sanitize(this.activeFile.content);
+    }
   }
 };
 </script>

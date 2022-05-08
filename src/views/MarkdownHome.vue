@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import { mapActions } from "pinia";
+import { useMarkdownStore } from "@/store/MarkdownStore";
+
 import MarkdownEditor from "@/components/MarkdownEditor.vue";
 import MarkdownPreview from "@/components/MarkdownPreview.vue";
 
@@ -14,6 +17,17 @@ export default {
   components: {
     MarkdownEditor,
     MarkdownPreview
+  },
+  beforeMount() {
+    this.setActiveFile(this.$route.params.fileName);
+  },
+  methods: {
+    ...mapActions(useMarkdownStore, ["setActiveFile"])
+  },
+  watch: {
+    $route() {
+      this.setActiveFile(this.$route.params.fileName);
+    }
   }
 };
 </script>

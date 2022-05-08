@@ -2,10 +2,15 @@
   <nav :class="['side-nav', navOpen && 'side-nav--nav-open']">
     <span class="heading side-nav__heading">MY DOCUMENTS</span>
     <v-button show-plus>+ New Document</v-button>
-    <file-display class="side-nav__file" sub-heading="01 April 2022" to="/untitled-document"
-      >untitled-document.md</file-display
+    <!-- TODO: add formatted date-->
+    <file-display
+      v-for="file in files"
+      :key="file.fileName"
+      class="side-nav__file"
+      :sub-heading="file.lastSaveDate"
+      :to="`/${file.fileName}`"
+      >{{ `${file.fileName}.md` }}</file-display
     >
-    <file-display class="side-nav__file" sub-heading="01 April 2022" to="/welcome">welcome.md</file-display>
     <div class="side-nav__theme-controls">
       <svg
         width="17"
@@ -41,6 +46,9 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+import { useMarkdownStore } from "@/store/MarkdownStore";
+
 export default {
   props: {
     navOpen: {
@@ -66,6 +74,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(useMarkdownStore, ["files"]),
     sliderBGImage() {
       return 'background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27%3e%3ccircle r=%273%27 fill=%27%23fff%27/%3e%3c/svg%3e")';
     }
