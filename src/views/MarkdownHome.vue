@@ -34,7 +34,10 @@ export default {
 
 <style lang="scss" scoped>
 .markdown-home {
+  padding-top: 72px;
   display: flex;
-  height: 100%;
+  min-height: 100%;
+  overflow: scroll;
+  background-color: var(--background-main);
 }
 </style>

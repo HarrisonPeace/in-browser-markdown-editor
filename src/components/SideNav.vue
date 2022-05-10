@@ -2,12 +2,11 @@
   <nav :class="['side-nav', navOpen && 'side-nav--nav-open']">
     <span class="heading side-nav__heading">MY DOCUMENTS</span>
     <v-button show-plus>+ New Document</v-button>
-    <!-- TODO: add formatted date-->
     <file-display
       v-for="file in files"
       :key="file.fileName"
       class="side-nav__file"
-      :sub-heading="file.lastSaveDate"
+      :sub-heading="formatLastSaveDate(file.lastSaveDate)"
       :to="`/${file.fileName}`"
       >{{ `${file.fileName}.md` }}</file-display
     >
@@ -48,6 +47,7 @@
 <script>
 import { mapState } from "pinia";
 import { useMarkdownStore } from "@/store/MarkdownStore";
+import { formatDate } from "@/functions/formatDate";
 
 export default {
   props: {
@@ -90,6 +90,9 @@ export default {
         localStorage.setItem("theme", "dark");
         this.themeActive = "dark";
       }
+    },
+    formatLastSaveDate(date) {
+      return formatDate(date);
     }
   }
 };

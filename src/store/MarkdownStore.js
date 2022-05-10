@@ -14,6 +14,9 @@ export const useMarkdownStore = defineStore("MarkdownStore", {
     updateActiveFileContent(fileContent) {
       this.activeFile.content = fileContent;
     },
+    updateActiveFileName(fileName) {
+      this.activeFile.fileName = fileName;
+    },
     getActiveFile() {
       return this.activeFile;
     },

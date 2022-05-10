@@ -16,7 +16,14 @@
     <h1 class="header__heading">MARKDOWN</h1>
     <div class="header__divider"></div>
     <div class="header__file">
-      <file-display>{{ `${activeFile.fileName}.md` }}</file-display>
+      <file-display>
+        <span
+          contenteditable="true"
+          class="header__active-file-name color-light"
+          @keyup="e => updateActiveFileName(e.target.innerText)">
+          {{ `${activeFile.fileName}` }} </span
+        >.md
+      </file-display>
     </div>
     <svg width="18" height="20" xmlns="http://www.w3.org/2000/svg" class="header__delete">
       <path
@@ -28,7 +35,7 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 import { useMarkdownStore } from "@/store/MarkdownStore";
 
 export default {
@@ -44,6 +51,7 @@ export default {
     ...mapState(useMarkdownStore, ["activeFile"])
   },
   methods: {
+    ...mapActions(useMarkdownStore, ["updateActiveFileName"]),
     menuClick() {
       this.$emit("menuClick");
     }
@@ -58,7 +66,8 @@ export default {
   display: flex;
   align-items: center;
   padding-right: 16px;
-
+  position: fixed;
+  width: 100%;
   &__menu-container {
     background-color: var(--bs-gray-700);
     height: 100%;
@@ -98,6 +107,9 @@ export default {
         fill: var(--highlight-primary);
       }
     }
+  }
+  &__active-file-name {
+    outline: none;
   }
 }
 </style>

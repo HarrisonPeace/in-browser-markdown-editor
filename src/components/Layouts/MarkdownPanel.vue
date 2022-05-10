@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-panel" ref="container">
-    <div class="markdown-panel__header">
+    <div :class="['markdown-panel__header', headingWidth && `markdown-panel__header--${headingWidth}`]">
       <h2 class="markdown-panel__heading">{{ heading }}</h2>
       <div><slot name="button"></slot></div>
     </div>
@@ -19,9 +19,9 @@ export default {
       type: String,
       required: true
     },
-    showBorder: {
-      type: Boolean,
-      default: false
+    headingWidth: {
+      type: String,
+      default: ""
     }
   },
   computed: {
@@ -59,13 +59,22 @@ export default {
 <style lang="scss">
 .markdown-panel {
   width: 100%;
-  background-color: var(--background-main);
   &__header {
     background-color: var(--background-panel-heading);
     height: 42px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 72px;
+    transition: width 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    width: 50%;
+    &--full-width {
+      width: 100%;
+    }
+    &--no-width {
+      width: 0;
+    }
   }
   &__heading {
     font-size: 13px;

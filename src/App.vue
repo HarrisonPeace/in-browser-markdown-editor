@@ -33,10 +33,10 @@ export default {
 .main-body {
   position: absolute;
   width: 100%;
-  height: calc(100% - 72px);
   top: 0;
   left: 0;
   transition: left 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  height: 100%;
   &--nav-open {
     left: 250px;
   }

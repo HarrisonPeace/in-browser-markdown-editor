@@ -1,6 +1,6 @@
 <template>
-  <section :class="['markdown-preview', !showEditor && 'markdown-preview--full-width']">
-    <markdown-panel heading="Preview">
+  <section :class="['markdown-preview', showEditor && 'markdown-preview--half-width']">
+    <markdown-panel heading="Preview" :headingWidth="showEditor ? '' : 'full-width'">
       <template #button>
         <button class="markdown-preview__button" @click="toggleShowEditor">
           <svg v-if="showEditor" width="16" height="12" xmlns="http://www.w3.org/2000/svg">
@@ -52,16 +52,19 @@ export default {
 .markdown-preview {
   display: flex;
   transition: width 900ms cubic-bezier(0.215, 0.61, 0.355, 1), border-width 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  width: 50%;
-  border-left: 1px solid var(--bs-gray-600);
-  &--full-width {
-    width: 100%;
-    border-width: 0px;
+  width: 100%;
+  border-left: 0px solid var(--bs-gray-600);
+  &--half-width {
+    width: 50%;
+    border-width: 1px;
   }
   &__button {
     border: none;
     background: none;
     margin-right: 16px;
+  }
+  &__content {
+    padding-top: 42px;
   }
 }
 </style>
