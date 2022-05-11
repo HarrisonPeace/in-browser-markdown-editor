@@ -1,15 +1,18 @@
 <template>
   <nav :class="['side-nav', navOpen && 'side-nav--nav-open']">
     <span class="heading side-nav__heading">MY DOCUMENTS</span>
-    <v-button show-plus>+ New Document</v-button>
-    <file-display
-      v-for="file in files"
-      :key="file.fileName"
-      class="side-nav__file"
-      :sub-heading="formatLastSaveDate(file.lastSaveDate)"
-      :to="`/${file.fileName}`"
-      >{{ `${file.fileName}.md` }}</file-display
-    >
+    <v-button @click="createNewFile">+ New Document</v-button>
+    <div class="side-nav__files-container">
+      <file-display
+        v-for="file in files"
+        :key="file.fileName"
+        class="side-nav__file"
+        :sub-heading="formatLastSaveDate(file.lastSaveDate)"
+        :to="`/${file.fileName}`"
+        restrict-width
+        >{{ `${file.fileName}.md` }}</file-display
+      >
+    </div>
     <div class="side-nav__theme-controls">
       <svg
         width="17"
@@ -45,7 +48,7 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 import { useMarkdownStore } from "@/store/MarkdownStore";
 import { formatDate } from "@/functions/formatDate";
 
@@ -80,6 +83,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(useMarkdownStore, ["createNewFile"]),
     switchTheme(e) {
       if (e.target.checked) {
         document.documentElement.setAttribute("data-theme", "light");
@@ -138,7 +142,11 @@ export default {
     margin-bottom: 29px;
     display: inline-block;
   }
-  &__file {
+  &__files-container {
+    padding: 24px 0;
+    overflow: scroll;
+  }
+  &__file:not(:first-child) {
     margin-top: 24px;
   }
   &__theme-controls {

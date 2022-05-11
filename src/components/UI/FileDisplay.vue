@@ -24,6 +24,10 @@ export default {
     subHeading: {
       type: String,
       default: "Document Name"
+    },
+    restrictWidth: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -36,7 +40,11 @@ export default {
         ...(this.to && {
           to: this.to
         }),
-        class: ["file-display", this.to && "file-display__hover"]
+        class: [
+          "file-display",
+          this.to && "file-display__hover",
+          this.restrictWidth && "file-display__restrict-name-width"
+        ]
       };
     }
   }
@@ -53,6 +61,13 @@ export default {
       color: var(--highlight-primary);
     }
   }
+  &__restrict-name-width {
+    .file-display__name {
+      word-break: break-all;
+      max-width: 160px;
+    }
+  }
+
   &__details {
     display: flex;
     flex-direction: column;

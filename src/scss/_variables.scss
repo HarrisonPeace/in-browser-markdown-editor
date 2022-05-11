@@ -6,26 +6,35 @@
   //dark theme colors as default
   --background-main: #151619;
   --background-secondary: var(--bs-gray-200);
+  --background-highlight: var(--bs-gray-800);
   --background-panel-heading: var(--bs-gray-900);
   --text-main: var(--bs-gray-400);
-  --text-secondary: var(--bs-gray-400);
+  --text-headings: var(--bs-gray-100);
   --text-highlight: var(--bs-white);
+  --text-editor: var(--bs-gray-400);
+  --modal-background: rgba(124, 129, 135, 0.4);
 }
 
 html[data-theme="light"] {
   --background-main: var(--bs-white);
   --background-secondary: var(--bs-gray-100);
+  --background-highlight: var(--bs-gray-200);
   --background-panel-heading: var(--bs-gray-200);
-  --text-main: var(--bs-gray-600);
-  --text-secondary: var(--bs-gray-500);
+  --text-main: var(--bs-gray-500);
+  --text-headings: var(--bs-gray-700);
   --text-highlight: var(--bs-gray-600);
+  --text-editor: var(--bs-gray-700);
+  --modal-background: rgba(#151619, 0.4);
 }
 
 html[data-theme="dark"] {
   --background-main: #151619;
   --background-secondary: var(--bs-gray-200);
+  --background-highlight: var(--bs-gray-800);
   --background-panel-heading: var(--bs-gray-900);
   --text-main: var(--bs-gray-400);
-  --text-secondary: var(--bs-gray-400);
+  --text-headings: var(--bs-gray-100);
   --text-highlight: var(--bs-white);
+  --text-editor: var(--bs-gray-400);
+  --modal-background: rgba(124, 129, 135, 0.4);
 }

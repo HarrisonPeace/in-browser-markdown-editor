@@ -81,7 +81,7 @@ export default {
     padding-left: 21px;
     margin-bottom: 0;
     font-family: "Commissioner", sans-serif;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     text-transform: uppercase;
   }
   &__content {

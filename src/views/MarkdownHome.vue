@@ -2,11 +2,12 @@
   <div class="markdown-home">
     <markdown-editor></markdown-editor>
     <markdown-preview></markdown-preview>
+    <v-modal :show-modal="showModal" />
   </div>
 </template>
 
 <script>
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 import { useMarkdownStore } from "@/store/MarkdownStore";
 
 import MarkdownEditor from "@/components/MarkdownEditor.vue";
@@ -17,6 +18,14 @@ export default {
   components: {
     MarkdownEditor,
     MarkdownPreview
+  },
+  data() {
+    return {
+      modal: null
+    };
+  },
+  computed: {
+    ...mapState(useMarkdownStore, ["showModal"])
   },
   beforeMount() {
     this.setActiveFile(this.$route.params.fileName);

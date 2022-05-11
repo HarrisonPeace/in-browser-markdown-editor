@@ -2,16 +2,43 @@
 // font-family: "Roboto", sans-serif;
 // font-family: "Roboto Slab", serif;
 
+a,
 p,
 button,
 span,
+li {
+  color: var(--text-main);
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
+h6,
+code {
+  color: var(--text-headings);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+blockquote,
+ol,
+ul {
+  margin-bottom: 20px;
+}
+
 h6 {
-  color: var(--text-main);
+  color: var(--highlight-primary);
+}
+
+a:hover {
+  color: var(--text-highlight);
 }
 
 .color-light {
@@ -20,7 +47,8 @@ h6 {
 
 p,
 button,
-span {
+span,
+li {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 15px;
@@ -47,6 +75,13 @@ span {
     line-height: 16px;
     font-size: 14px;
   }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 h1,
@@ -95,4 +130,37 @@ h5 {
 h6 {
   font-size: 14px;
   line-height: 18px;
+}
+
+blockquote,
+pre {
+  padding: 24px;
+  background-color: var(--background-highlight);
+  border-radius: 4px;
+}
+
+blockquote {
+  border-left: solid 4px var(--highlight-primary);
+  p,
+  a {
+    font-weight: bold;
+    font-family: "Roboto Slab", serif;
+    color: var(--text-headings);
+  }
+  a:hover {
+    color: var(--text-main);
+  }
+}
+
+pre {
+  code {
+    font-family: "Roboto Slab", serif;
+    color: var(--text-headings);
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+  }
+}
+
+code {
+  font-size: 15px;
 }

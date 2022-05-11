@@ -51,16 +51,20 @@ export default {
   display: flex;
   transition: width 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
   width: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   &--half-width {
     width: 50%;
+    overflow-x: hidden;
+    overflow-y: initial;
   }
   &__content {
     padding-top: 42px;
     outline: none;
     width: 100%;
-    color: var(--text-main);
+    color: var(--text-editor);
     transition: height 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
     &--no-height {
       height: 0;
     }
