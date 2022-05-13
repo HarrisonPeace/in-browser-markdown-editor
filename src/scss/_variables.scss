@@ -12,6 +12,7 @@
   --text-headings: var(--bs-gray-100);
   --text-highlight: var(--bs-white);
   --text-editor: var(--bs-gray-400);
+  --text-highlight: var(--bs-gray-900);
   --modal-background: rgba(124, 129, 135, 0.4);
 }
 
@@ -24,6 +25,7 @@ html[data-theme="light"] {
   --text-headings: var(--bs-gray-700);
   --text-highlight: var(--bs-gray-600);
   --text-editor: var(--bs-gray-700);
+  --text-highlight: var(--bs-gray-100);
   --modal-background: rgba(#151619, 0.4);
 }
 
@@ -36,5 +38,6 @@ html[data-theme="dark"] {
   --text-headings: var(--bs-gray-100);
   --text-highlight: var(--bs-white);
   --text-editor: var(--bs-gray-400);
+  --text-highlight: var(--bs-gray-900);
   --modal-background: rgba(124, 129, 135, 0.4);
 }

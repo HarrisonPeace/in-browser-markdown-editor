@@ -17,9 +17,9 @@ export const useMarkdownStore = defineStore("MarkdownStore", {
     toggleShowEditor() {
       this.showEditor = !this.showEditor;
     },
-    // TODO: revert this to false on modal close + add in second modal when not saved
+    // TODO: add in second modal when not saved
     toggleModal() {
-      this.showModal = true;
+      this.showModal = !this.showModal;
     },
     updateActiveFileContent(fileContent) {
       this.activeFile.content = fileContent;
@@ -30,12 +30,30 @@ export const useMarkdownStore = defineStore("MarkdownStore", {
     getActiveFile() {
       return this.activeFile;
     },
+    deleteActiveFile() {
+      this.files = this.files.filter(file => file.fileName !== this.activeFile.fileName);
+      this.saveFiles();
+      this.$router.push("/");
+    },
+    saveFiles() {
+      localStorage.setItem("files", JSON.stringify(this.files));
+      this.$router.replace(`/${this.activeFile.fileName}`);
+    },
     setActiveFile(fileName) {
-      if (!fileName) return;
-      const file = this.files.find(file => file.fileName === fileName);
-      if (!file) {
-        //TODO: create error redirect
+      if (!fileName) {
+        this.activeFile = welcomeFile;
         return;
+      }
+      let file = this.files.find(file => file.fileName === fileName);
+      if (!file) {
+        file = this.activeFile = {
+          fileName,
+          lastSaveDate: new Date(),
+          content: `# File ***${fileName}*** either never existed or has been lost to the cosmos
+
+###### Either select another file from the menu or start editing!
+          `
+        };
       }
       this.activeFile = file;
     },

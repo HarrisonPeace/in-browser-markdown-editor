@@ -30,7 +30,12 @@
         d="M7 16a1 1 0 0 0 1-1V9a1 1 0 1 0-2 0v6a1 1 0 0 0 1 1ZM17 4h-4V3a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v1H1a1 1 0 1 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V6h1a1 1 0 0 0 0-2ZM7 3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1H7V3Zm7 14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6h10v11Zm-3-1a1 1 0 0 0 1-1V9a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z"
         fill="#7C8187" />
     </svg>
-    <v-button show-save>Save Changes</v-button>
+    <div :class="['header__save-container', showFileSaved && 'header__save--show-saved']">
+      <v-button show-save @click="saveFile">
+        Save Changes
+        <span class="color-light header__saved">Changes Saved</span>
+      </v-button>
+    </div>
   </div>
 </template>
 
@@ -47,13 +52,23 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      showFileSaved: false
+    };
+  },
   computed: {
     ...mapState(useMarkdownStore, ["activeFile"])
   },
   methods: {
-    ...mapActions(useMarkdownStore, ["updateActiveFileName", "toggleModal"]),
+    ...mapActions(useMarkdownStore, ["updateActiveFileName", "toggleModal", "saveFiles"]),
     menuClick() {
       this.$emit("menuClick");
+    },
+    saveFile() {
+      this.saveFiles();
+      this.showFileSaved = true;
+      setTimeout(() => (this.showFileSaved = false), 1000);
     }
   }
 };
@@ -111,6 +126,34 @@ export default {
   }
   &__active-file-name {
     outline: none;
+    caret-color: var(--highlight-primary);
+  }
+  &__save--show-saved {
+    .header__saved {
+      top: 0px;
+    }
+  }
+  &__save-container {
+    position: relative;
+    overflow: hidden;
+    &:hover {
+      .header__saved {
+        background-color: var(--highlight-secondary);
+      }
+    }
+  }
+  &__saved {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    top: -45px;
+    left: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--highlight-primary);
+    border-radius: 4px;
+    transition: top 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 }
 </style>

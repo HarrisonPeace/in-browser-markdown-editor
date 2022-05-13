@@ -61,6 +61,7 @@ export default {
     padding-top: 42px;
     outline: none;
     width: 100%;
+    caret-color: var(--highlight-primary);
     color: var(--text-editor);
     transition: height 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
     font-family: "Roboto Mono", monospace;

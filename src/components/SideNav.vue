@@ -115,6 +115,7 @@ export default {
   margin-right: 10px;
   .form-check-input {
     padding: 11px 23px;
+    cursor: pointer;
     box-shadow: none;
     background-color: var(--bs-gray-600);
     border: var(--bs-gray-600);
@@ -144,7 +145,7 @@ export default {
   }
   &__files-container {
     padding: 24px 0;
-    overflow: scroll;
+    overflow-y: auto;
   }
   &__file:not(:first-child) {
     margin-top: 24px;

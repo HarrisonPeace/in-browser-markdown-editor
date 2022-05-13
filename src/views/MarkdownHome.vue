@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      modal: null
+      error: false
     };
   },
   computed: {
@@ -43,10 +43,11 @@ export default {
 
 <style lang="scss" scoped>
 .markdown-home {
+  width: 100vw;
   padding-top: 72px;
   display: flex;
   min-height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: var(--background-main);
 }
 </style>

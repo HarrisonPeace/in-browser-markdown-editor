@@ -1,7 +1,13 @@
 <template>
   <div>
     <button ref="modalButton" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: none"></button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      ref="modal"
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -9,7 +15,9 @@
             <p>
               Are you sure you want to delete ‘welcome.md’ document and its contents? This action cannot be reversed.
             </p>
-            <v-button type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm & Delete</v-button>
+            <v-button type="button" data-bs-dismiss="modal" class="btn btn-primary" @click="confirmDelete"
+              >Confirm & Delete</v-button
+            >
           </div>
         </div>
       </div>
@@ -18,9 +26,11 @@
 </template>
 
 <script>
+import { mapActions } from "pinia";
+import { useMarkdownStore } from "@/store/MarkdownStore";
+
 export default {
   name: "v-modal",
-  emits: ["showModal"],
   data() {
     return {
       modal: null
@@ -33,13 +43,26 @@ export default {
     }
   },
   mounted() {
+    this.$refs.modal.addEventListener("hidden.bs.modal", () => {
+      this.toggleModal();
+    });
     if (this.showModal) {
       this.$refs.modalButton.click();
     }
   },
   watch: {
     showModal() {
-      this.$refs.modalButton.click();
+      this.showModal && this.$refs.modalButton.click();
+    }
+  },
+  methods: {
+    ...mapActions(useMarkdownStore, ["toggleModal", "deleteActiveFile"]),
+    menuClick() {
+      this.$emit("menuClick");
+    },
+    confirmDelete() {
+      this.deleteActiveFile();
+      this.$router.push("/");
     }
   }
 };
