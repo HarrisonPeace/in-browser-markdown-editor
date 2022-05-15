@@ -6,7 +6,10 @@
         fill="#FFF" />
     </svg>
     <div class="file-display__details">
-      <span class="file-display__heading">{{ subHeading }}</span>
+      <span
+        :class="['file-display__sub-heading', hideSubHeadingMobile && 'file-display__sub-heading--hide-on-mobile']"
+        >{{ subHeading }}</span
+      >
       <span class="file-display__name color-light"><slot /></span>
     </div>
   </component>
@@ -26,6 +29,10 @@ export default {
       default: "Document Name"
     },
     restrictWidth: {
+      type: Boolean,
+      default: false
+    },
+    hideSubHeadingMobile: {
       type: Boolean,
       default: false
     }
@@ -67,17 +74,19 @@ export default {
       max-width: 160px;
     }
   }
-
   &__details {
     display: flex;
     flex-direction: column;
     margin-left: 16px;
   }
-  &__heading {
+  &__sub-heading {
     font-weight: 300;
     font-size: 13px;
     line-height: 15px;
     color: var(--bs-gray-500);
+    &--hide-on-mobile {
+      @include hide-mobile;
+    }
   }
   &__name {
     line-height: 18px;

@@ -3,10 +3,12 @@ import MarkdownHome from "../views/MarkdownHome.vue";
 
 const routes = [
   {
+    path: "/",
+    component: MarkdownHome
+  },
+  {
     path: "/:fileName",
-    name: "MarkdownHome",
-    component: MarkdownHome,
-    alias: "/"
+    component: MarkdownHome
   }
 ];
 

@@ -1,6 +1,6 @@
 <template>
-  <section :class="['markdown-editor', showEditor && 'markdown-editor--half-width']">
-    <markdown-panel heading="Markdown" :headingWidth="showEditor ? '' : 'no-width'">
+  <section :class="['markdown-editor', !showEditor && 'markdown-editor--no-width']">
+    <markdown-panel heading="Markdown">
       <div
         ref="markdownText"
         contenteditable="true"
@@ -47,17 +47,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.markdown-editor::v-deep .markdown-panel__header {
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+}
+.markdown-editor--no-width::v-deep .markdown-panel__header {
+  width: 0;
+}
 .markdown-editor {
   display: flex;
   transition: width 900ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  width: 0;
-  overflow: hidden;
-  &--half-width {
+  width: 100%;
+  @media (min-width: 768px) {
     width: 50%;
-    overflow-x: hidden;
-    overflow-y: initial;
+  }
+  overflow-x: hidden;
+  overflow-y: initial;
+  &--no-width {
+    width: 0;
+    overflow: hidden;
   }
   &__content {
+    max-width: 100%;
     padding-top: 42px;
     outline: none;
     width: 100%;

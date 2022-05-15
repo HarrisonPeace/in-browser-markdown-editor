@@ -31,14 +31,17 @@ export default {
   background-color: var(--highlight-primary);
   border-radius: 4px;
   text-decoration: none;
-  padding: 10px 16px;
+  padding: 11px 11px;
   line-height: normal;
   border: none;
   &:hover {
     background-color: var(--highlight-secondary);
   }
-  &__save-icon {
-    margin-right: 8px;
+  @media (min-width: 768px) {
+    padding: 10px 16px;
+    &__save-icon {
+      margin-right: 8px;
+    }
   }
 }
 </style>

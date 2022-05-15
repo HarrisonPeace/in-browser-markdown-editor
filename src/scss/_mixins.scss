@@ -2,9 +2,22 @@
 //                    Mixins                     //
 // ============================================= //
 
+//breakpoints
 @mixin centered-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-  
+
+@mixin hide-mobile {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+@mixin hide-tablet-up {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}

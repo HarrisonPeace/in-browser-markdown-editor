@@ -130,7 +130,7 @@ export default {
   width: 250px;
   padding: 27px 24px;
   background-color: var(--bs-gray-900);
-  height: 100vh;
+  height: 100%;
   position: fixed;
   top: 0;
   left: -250px;
