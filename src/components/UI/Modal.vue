@@ -1,13 +1,7 @@
 <template>
   <div>
-    <button ref="modalButton" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: none"></button>
-    <div
-      ref="modal"
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
+    <button ref="modalButton" data-bs-toggle="modal" data-bs-target="#modal" style="display: none"></button>
+    <div ref="modal" class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">

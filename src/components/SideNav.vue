@@ -24,6 +24,7 @@
           fill="#5A6069" />
       </svg>
       <div class="form-check form-switch">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Dark to light mode switch</label>
         <input
           @click="switchTheme"
           ref="toggleSwitch"
@@ -32,7 +33,6 @@
           role="switch"
           id="flexSwitchCheckDefault"
           :style="sliderBGImage" />
-        <label class="form-check-label" for="flexSwitchCheckDefault">Dark to light mode switch</label>
       </div>
       <svg
         width="18"
