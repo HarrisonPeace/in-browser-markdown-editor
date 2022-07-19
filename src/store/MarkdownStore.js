@@ -17,7 +17,6 @@ export const useMarkdownStore = defineStore("MarkdownStore", {
     toggleShowEditor() {
       this.showEditor = !this.showEditor;
     },
-    // TODO: add in second modal when not saved
     toggleModal() {
       this.showModal = !this.showModal;
     },
@@ -36,6 +35,9 @@ export const useMarkdownStore = defineStore("MarkdownStore", {
       this.$router.push("/");
     },
     saveFiles() {
+      if (!this.files.some(file => file.fileName === this.activeFile.fileName)) {
+        this.files.push(this.activeFile);
+      }
       localStorage.setItem("files", JSON.stringify(this.files));
       this.$router.replace(`/${this.activeFile.fileName}`);
     },

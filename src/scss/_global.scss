@@ -3,6 +3,10 @@ body {
   transition: background-color ease-out 0.3s, color ease-out 0.3s;
 }
 
+main {
+  height: 100%;
+}
+
 div {
   transition: background-color ease-out 0.3s;
 }
