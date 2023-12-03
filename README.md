@@ -45,7 +45,6 @@ Users should be able to:
 
 ## Author
 
-- Website - [Harrison Peace](https://www.harrison-peace.com)
 - LinkedIn - [harrison-peace](https://www.linkedin.com/in/harrison-peace/)
 
 ## Commands
